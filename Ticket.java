@@ -1,7 +1,6 @@
-package wristband_sales_software;
+package project;
 
-class Ticket
-{
+class Ticket {
     public int amount;
     public String type;
     public float price;
@@ -11,40 +10,33 @@ class Ticket
     //niin tein täst luokast nyt sellasen et täl ei oo vakioconstructoria vaa settereiden
     //kautta sit asettaa oliolle ne arvot properteihin
 
-    /*Ticket(int amount, String type, float price)
-    {
+    /*Ticket(int amount, String type, float price) {
         this.amount = amount;
         this.type = type;
         this.price = price;
     }*/
 
-    void setAmount(int amount)
-    {
+    void setAmount(int amount) {
         this.amount = amount;
     }
 
-    void setType(String type)
-    {
+    void setType(String type) {
         this.type = type;
     }
 
-    void setPrice(float price)
-    {
+    void setPrice(float price) {
         this.price = price;
     }
 
-    void setCustomer_name(String new_customer_name)
-    {
+    void setCustomer_name(String new_customer_name) {
         customer_name = new_customer_name;
     }
 
-    void setPhone_number(String new_phone_number)
-    {
+    void setPhone_number(String new_phone_number) {
         phone_number = new_phone_number;
     }
 
-    float getPrice()
-    {
+    float getPrice() {
         return price;
     }
 

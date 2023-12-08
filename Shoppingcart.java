@@ -1,4 +1,4 @@
-package wristband_sales_software;
+package project;
 import javax.swing.*;
 import java.util.ArrayList;
 
