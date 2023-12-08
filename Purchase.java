@@ -65,6 +65,7 @@ class Purchase {
         
         try {
             writer.write(Integer.toString(next_purchase_number));
+            writer.close();
         }
 
         catch (IOException e) {
@@ -86,6 +87,8 @@ class Purchase {
             writer.write("\r\n");
             writer.write("Huvipuisto / Amusement Park");
             writer.write(buytime.format(dtf));
+            //kesken viel
+            writer.close();
         }
 
         catch (FileNotFoundException e) {
