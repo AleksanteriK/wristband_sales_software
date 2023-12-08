@@ -1,0 +1,21 @@
+päivän myynnit
+7.12.2023
+
+ostos_1 10:20 150€
+[
+2x normaali
+1x lasten
+1x lasten
+1x lasten
+1x alennus
+]
+
+ostos_2 10:25 50€
+[
+2x normaali
+]
+
+ostos_3 10:35 500€
+[
+15x lasten (synttäri, 044 123123132)
+]
