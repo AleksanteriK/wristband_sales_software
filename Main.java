@@ -1,10 +1,12 @@
-//package wristband_sales_software;
+package project;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.FlowLayout;
-//import java.util.ArrayList;
+import java.util.ArrayList;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 class Main
 {
@@ -117,5 +119,16 @@ class Main
         //tekee näkyväksi
         frame.setLayout(new FlowLayout());
         frame.setVisible(true);
+
+        //väliaikanen debug
+        Purchase testi = new Purchase(10.01);
+
+        try {
+            testi.setPurchase_number();
+            testi.updatePurchase_number();
+            testi.PrintReceipt();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
