@@ -1,12 +1,14 @@
 package wristband_sales_software;
 import java.util.ArrayList;
 
-class Purchase {
+class Purchase
+{
     private int purchase_number;
     private float buytime;
     float total_price;
 
-    purchase (int purchase_number, float buytime, float total_price) {
+    void purchase (int purchase_number, float buytime, float total_price)
+    {
         this.purchase_number = purchase_number;
         this.buytime = buytime;
         this.total_price = total_price;
