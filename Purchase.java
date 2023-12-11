@@ -115,7 +115,7 @@ class Purchase {
 
         try {
             buytime = LocalDateTime.now();
-            receipt_writer.write("Kuitti / Receipt");
+            receipt_writer.write("Kuitti_" + purchase_number + " / Receipt_" + purchase_number);
             receipt_writer.write("\r\n");
             receipt_writer.write("Huvipuisto / Amusement Park");
             receipt_writer.write("\r\n");
@@ -145,6 +145,10 @@ class Purchase {
         finally {
             receipt_writer.close();
         }
+    }
+
+    int getPurchase_number() {
+        return purchase_number;
     }
 
     //voidaan myös toteuttaa erikseen puchase olion luonti ilman vakioconstructoria,
