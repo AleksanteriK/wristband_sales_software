@@ -3,7 +3,7 @@ package project;
 class Ticket {
     public int amount;
     public String type;
-    public float price;
+    public double price;
     public String customer_name;
     public String phone_number;
     //jotta sai ton shoppincart luokassa yhteishinnan laskun toimii, täyty tehä vähä temppuja
@@ -24,7 +24,7 @@ class Ticket {
         this.type = type;
     }
 
-    void setPrice(float price) {
+    void setPrice(double price) {
         this.price = price;
     }
 
@@ -36,9 +36,19 @@ class Ticket {
         phone_number = new_phone_number;
     }
 
-    float getPrice() {
+    double getPrice() {
         return price;
     }
+
+    int getAmount() {
+        return amount;
+    }
+
+    //tän avulla pystyy tulostamaan kuittiin ja muihin lipun tietoja
+    public String ticket_toString() {
+        return "Amount / Määrä: " + amount + ", Type / Lipputyyppi: " + type + ", Price / hinta: " + price;
+    }
+
 
     //aattelin luoda noi setterit sitä lastenlippua varten myös, voi muokata jos tää tyyli ei sovi.
     //periaattees tällä voi luua tän tiksun ilman et on pakko laittaa siihen olioon myös nimi

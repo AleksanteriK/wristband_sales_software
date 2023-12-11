@@ -9,13 +9,20 @@ import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
 
 class Purchase {
-    private int purchase_number;
-    private double total_price;
-    private int next_purchase_number;
+    public ArrayList<Ticket> tickets = new ArrayList<>();
+    public String purchase_number_file_name = "ostokset_maara.txt";
+    public String receipt_file_name = "kuitti.txt";
+    public File purchase_number_file;
+    public File receipt_file;
 
-    Purchase (double total_price) {
-        this.total_price = total_price; 
+    Purchase (double total_price, ArrayList<Ticket> pending_tickets) {
+        this.total_price = total_price;
+
+        for (int i = 0; i < pending_tickets.size(); i++) {
+            tickets.add(pending_tickets.get(i));
+        }
     }
+    
     //tällä metodilla saadaan siis ostoksen numero (kinda id) päivitettyä
     //tän ostosluokan propertyyn purchase_number, kyseinen löytyy siis tosta
     //tekstitiedostosta josta se lukee sen ja assignaa sen
@@ -70,14 +77,15 @@ class Purchase {
     //tällä metodilla taas sitten se uus seuraava ostosnumero päivitetään tiedostoon
     void updatePurchase_number() throws IOException {
         next_purchase_number = purchase_number + 1;
-    
         purchase_number_file = new File(purchase_number_file_name);
     
         //tiedoston olemassaolochecki
         if (!purchase_number_file.exists()) {
             try {
                 purchase_number_file.createNewFile();
-            } catch (IOException e) {
+            } 
+            
+            catch (IOException e) {
                 e.printStackTrace();
             }
         }
@@ -90,11 +98,14 @@ class Purchase {
 
     void PrintReceipt() throws IOException {
         receipt_file = new File(receipt_file_name);
+
         if (receipt_file.createNewFile()) {
             System.out.println("File created");
             //'false' enablee päällekirjotuksen
             receipt_writer = new FileWriter(receipt_file_name, false);
-        } else {
+        } 
+        
+        else {
             //'false' enablee päällekirjotuksen
             receipt_writer = new FileWriter(receipt_file_name, false);
         }
@@ -107,9 +118,28 @@ class Purchase {
             receipt_writer.write("\r\n");
             receipt_writer.write(buytime.format(dtf));
             receipt_writer.write("\r\n");
-            receipt_writer.write("Maksettu / Paid total:" + total_price);
-            // kesken viel
-        } finally {
+            receipt_writer.write("Maksettu / Paid total:" + Double.toString(total_price) + "e");
+            receipt_writer.write("\r\n");
+            receipt_writer.write("\r\n");
+
+            for (int i = 0; i < tickets.size(); i++) {
+                receipt_writer.write(tickets.get(i).ticket_toString());
+                receipt_writer.write("\r\n");
+            }
+
+            receipt_writer.write("\r\n");
+            receipt_writer.write("Alv %   ");
+            receipt_writer.write("Veroton   ");
+            receipt_writer.write("Vero   ");
+            receipt_writer.write("Summa   ");
+            receipt_writer.write("\r\n");
+            receipt_writer.write("10 %   ");
+            receipt_writer.write(Double.toString(total_price * 0.90) + "e    ");
+            receipt_writer.write(Double.toString(total_price * 0.10) + "e    ");
+            receipt_writer.write(Double.toString(total_price) + "e    ");
+        } 
+        
+        finally {
             receipt_writer.close();
         }
     }
@@ -118,15 +148,12 @@ class Purchase {
     //eli luodaan esim ensin vaan pelkkä purchase olio ilman mitään parametrejä ja yks kerrallaan
     //lisätään properteihin settereitten kautta noi hinnat ja aika jne, tein kuitenki ton constructorin
     //valmiiks 
-
-    //public Arraylist<Ticket> tickets;
-    public String purchase_number_file_name = "ostokset_maara.txt";
-    public String receipt_file_name = "kuitti.txt";
-    public DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-    public LocalDateTime buytime;
-    public FileWriter writer;
-    public FileWriter receipt_writer;
-    public File purchase_number_file;
-    public File receipt_file;
-    public Scanner purchase_number_file_scanner;
+    private int purchase_number;
+    private double total_price;
+    private int next_purchase_number;
+    private LocalDateTime buytime;
+    private DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+    private FileWriter writer;
+    private FileWriter receipt_writer;
+    private Scanner purchase_number_file_scanner;
 }
