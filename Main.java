@@ -36,6 +36,16 @@ public class Main extends JFrame
                     JButton normalButton = new JButton("Normaali");
                     normalPanel.add(normalButton);
 
+                    normalButton.addActionListener(
+                        new ActionListener()
+                        {
+                            public void actionPerformed(ActionEvent e)
+                            {
+                                // lisää normaali lippu ostoskoriin
+                            }
+                        }
+                    );
+
                     JPanel normalButtonsPanel = new JPanel(new GridLayout(1, 4));
                     normalPanel.add(normalButtonsPanel);
 
@@ -48,14 +58,44 @@ public class Main extends JFrame
                         JButton normalReduceButton = new JButton("-");
                         normalButtonsPanel.add(normalReduceButton);
 
+                        normalReduceButton.addActionListener(
+                            new ActionListener()
+                            {
+                                public void actionPerformed(ActionEvent e)
+                                {
+                                    // -1 normaali lippu
+                                }
+                            }
+                        );
+
                         JButton normalAddButton = new JButton("+");
                         normalButtonsPanel.add(normalAddButton);
+
+                        normalAddButton.addActionListener(
+                            new ActionListener()
+                            {
+                                public void actionPerformed(ActionEvent e)
+                                {
+                                    // +1 normaali lippu
+                                }
+                            }
+                        );
 
                 JPanel childPanel = new JPanel(new GridLayout(2, 1));
                 buyPanel.add(childPanel);
 
                     JButton childButton = new JButton("Lapsi");
                     childPanel.add(childButton);
+
+                    childButton.addActionListener(
+                        new ActionListener()
+                        {
+                            public void actionPerformed(ActionEvent e)
+                            {
+                                // lisää lasten lippu ostoskoriin
+                            }
+                        }
+                    );
 
                     JPanel childButtonsPanel = new JPanel(new GridLayout(1, 4));
                     childPanel.add(childButtonsPanel);
@@ -69,14 +109,44 @@ public class Main extends JFrame
                         JButton childReduceButton = new JButton("-");
                         childButtonsPanel.add(childReduceButton);
 
+                        childReduceButton.addActionListener(
+                            new ActionListener()
+                            {
+                                public void actionPerformed(ActionEvent e)
+                                {
+                                    // -1 lasten lippu
+                                }
+                            }
+                        );
+
                         JButton childAddButton = new JButton("+");
                         childButtonsPanel.add(childAddButton);
+
+                        childAddButton.addActionListener(
+                            new ActionListener()
+                            {
+                                public void actionPerformed(ActionEvent e)
+                                {
+                                    // +1 lasten lippu
+                                }
+                            }
+                        );
 
                 JPanel discountPanel = new JPanel(new GridLayout(2, 1));
                 buyPanel.add(discountPanel);
 
                     JButton discountButton = new JButton("Alennus");
                     discountPanel.add(discountButton);
+
+                    discountButton.addActionListener(
+                        new ActionListener()
+                        {
+                            public void actionPerformed(ActionEvent e)
+                            {
+                                // lisää alennus lippu ostoskoriin
+                            }
+                        }
+                    );
 
                     JPanel discountButtonsPanel = new JPanel(new GridLayout(1, 4));
                     discountPanel.add(discountButtonsPanel);
@@ -90,8 +160,28 @@ public class Main extends JFrame
                         JButton discountReduceButton = new JButton("-");
                         discountButtonsPanel.add(discountReduceButton);
 
+                        discountButton.addActionListener(
+                            new ActionListener()
+                            {
+                                public void actionPerformed(ActionEvent e)
+                                {
+                                    // -1 alennus lippu
+                                }
+                            }
+                        );
+
                         JButton discountAddButton = new JButton("+");
                         discountButtonsPanel.add(discountAddButton);
+
+                        discountButton.addActionListener(
+                            new ActionListener()
+                            {
+                                public void actionPerformed(ActionEvent e)
+                                {
+                                    // +1 alennus lippu
+                                }
+                            }
+                        );
 
             JPanel firstPanel = new JPanel(new GridLayout(4, 1));
             mainPanel.add(firstPanel);
@@ -178,6 +268,16 @@ public class Main extends JFrame
                     JButton cancelButton = new JButton("X");
                     cancelPanel.add(cancelButton);
 
+                    cancelButton.addActionListener(
+                        new ActionListener()
+                        {
+                            public void actionPerformed(ActionEvent e)
+                            {
+                                // poista koko tilaus ostoskorista
+                            }
+                        }
+                    );
+
             JPanel shoppingcartPanel = new JPanel();
             mainPanel.add(shoppingcartPanel);
 
@@ -188,8 +288,18 @@ public class Main extends JFrame
                 JLabel totalPriceLabel = new JLabel("Kokonaishinta: " + total_price + "€");
                 shoppingcartPanel.add(totalPriceLabel);
 
-                JButton buyButton = new JButton("Osta");
+                JButton buyButton = new JButton("Maksa");
                 shoppingcartPanel.add(buyButton);
+
+                buyButton.addActionListener(
+                    new ActionListener()
+                    {
+                        public void actionPerformed(ActionEvent e)
+                        {
+                            // aktivoi maksupäätteen (popup window "odottaa maksua" jossa nappi maksa ja peruuta) ja tulostaa kuitin tilauksesta
+                        }
+                    }
+                );
 
         
 
