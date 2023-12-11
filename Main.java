@@ -1,4 +1,5 @@
 package project;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,121 +8,200 @@ import java.awt.FlowLayout;
 import java.util.ArrayList;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.awt.GridLayout;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
-class Main
+public class Main extends JFrame
 {
+    public Main()
+    {
+        setSize(1920, 1080);
+        setTitle("Shop Window");
+
+        JPanel mainPanel = new JPanel(new GridLayout(1, 5));
+        add(mainPanel);
+
+            JPanel buyPanel = new JPanel(new GridLayout(4, 1));
+            mainPanel.add(buyPanel);
+
+                JPanel normalPanel = new JPanel(new GridLayout(2, 1));
+                buyPanel.add(normalPanel);
+
+                    JButton normalButton = new JButton("Normaali");
+                    normalPanel.add(normalButton);
+
+                    JPanel normalButtonsPanel = new JPanel(new GridLayout(1, 4));
+                    normalPanel.add(normalButtonsPanel);
+
+                        JPanel emptyNormalPanel = new JPanel();
+                        normalButtonsPanel.add(emptyNormalPanel);
+
+                        JTextField normalNumberField = new JTextField(3);
+                        normalButtonsPanel.add(normalNumberField);
+
+                        JButton normalReduceButton = new JButton("-");
+                        normalButtonsPanel.add(normalReduceButton);
+
+                        JButton normalAddButton = new JButton("+");
+                        normalButtonsPanel.add(normalAddButton);
+
+                JPanel childPanel = new JPanel(new GridLayout(2, 1));
+                buyPanel.add(childPanel);
+
+                    JButton childButton = new JButton("Lapsi");
+                    childPanel.add(childButton);
+
+                    JPanel childButtonsPanel = new JPanel(new GridLayout(1, 4));
+                    childPanel.add(childButtonsPanel);
+
+                        JPanel emptyChildPanel = new JPanel();
+                        childButtonsPanel.add(emptyChildPanel);
+
+                        JTextField childNumberField = new JTextField(3);
+                        childButtonsPanel.add(childNumberField);
+
+                        JButton childReduceButton = new JButton("-");
+                        childButtonsPanel.add(childReduceButton);
+
+                        JButton childAddButton = new JButton("+");
+                        childButtonsPanel.add(childAddButton);
+
+                JPanel discountPanel = new JPanel(new GridLayout(2, 1));
+                buyPanel.add(discountPanel);
+
+                    JButton discountButton = new JButton("Alennus");
+                    discountPanel.add(discountButton);
+
+                    JPanel discountButtonsPanel = new JPanel(new GridLayout(1, 4));
+                    discountPanel.add(discountButtonsPanel);
+
+                        JPanel emptyDiscountPanel = new JPanel();
+                        discountButtonsPanel.add(emptyDiscountPanel);
+
+                        JTextField discountNumberField = new JTextField(3);
+                        discountButtonsPanel.add(discountNumberField);
+
+                        JButton discountReduceButton = new JButton("-");
+                        discountButtonsPanel.add(discountReduceButton);
+
+                        JButton discountAddButton = new JButton("+");
+                        discountButtonsPanel.add(discountAddButton);
+
+            JPanel firstPanel = new JPanel(new GridLayout(4, 1));
+            mainPanel.add(firstPanel);
+
+                JPanel emptyfirstPanel1 = new JPanel();
+                firstPanel.add(emptyfirstPanel1);
+
+                JPanel childNamePanel = new JPanel(new GridLayout(4, 1));
+                firstPanel.add(childNamePanel);
+
+                    JLabel childNameLabel = new JLabel("Lapsen nimi:");
+                    childNamePanel.add(childNameLabel);
+
+                    JTextField childNameField = new JTextField(15);
+                    childNamePanel.add(childNameField);
+
+                    JCheckBox childNameLockCheckBox = new JCheckBox("Lukitse");
+                    childNamePanel.add(childNameLockCheckBox);
+
+                    JPanel emptyChildNamePanel = new JPanel();
+                    childNamePanel.add(emptyChildNamePanel);
+
+                JPanel discountTypePanel = new JPanel(new GridLayout(4, 1));
+                firstPanel.add(discountTypePanel);
+
+                    JLabel discountTypeLabel = new JLabel("Alennusryhmä:");
+                    discountTypePanel.add(discountTypeLabel);
+
+                    String discountTypeList[] = {"Opiskelija", "Varusmies", "Eläkeläinen", "Kampanja", "Extra"};
+                    final JComboBox<String> discountTypeBox = new JComboBox<String>(discountTypeList);
+                    discountTypePanel.add(discountTypeBox);
+
+                    JPanel emptyDiscountTypePanel1 = new JPanel();
+                    discountTypePanel.add(emptyDiscountTypePanel1);
+
+                    JPanel emptyDiscountTypePanel2 = new JPanel();
+                    discountTypePanel.add(emptyDiscountTypePanel2);
+
+                JPanel emptyfirstPanel2 = new JPanel();
+                firstPanel.add(emptyfirstPanel2);
+
+            JPanel secondPanel = new JPanel(new GridLayout(4, 1));
+            mainPanel.add(secondPanel);
+
+                JPanel emptySecondPanel1 = new JPanel();
+                secondPanel.add(emptySecondPanel1);
+
+                JPanel childPhonePanel = new JPanel(new GridLayout(4, 1));
+                secondPanel.add(childPhonePanel);
+
+                    JLabel childPhoneLabel = new JLabel("Huoltajan puh:");
+                    childPhonePanel.add(childPhoneLabel);
+
+                    JTextField childPhoneField = new JTextField(15);
+                    childPhonePanel.add(childPhoneField);
+
+                    JCheckBox childPhoneLockCheckBox = new JCheckBox("Lukitse");
+                    childPhonePanel.add(childPhoneLockCheckBox);
+
+                    JPanel emptyChildPhonePanel = new JPanel();
+                    childPhonePanel.add(emptyChildPhonePanel);
+
+                JPanel emptySecondPanel2 = new JPanel();
+                secondPanel.add(emptySecondPanel2);
+
+                JPanel emptySecondPanel3 = new JPanel();
+                secondPanel.add(emptySecondPanel3);
+
+            JPanel thirdPanel = new JPanel(new GridLayout(4, 1));
+            mainPanel.add(thirdPanel);
+
+                JPanel emptyThirdPanel1 = new JPanel();
+                thirdPanel.add(emptyThirdPanel1);
+
+                JPanel emptyThirdPanel2 = new JPanel();
+                thirdPanel.add(emptyThirdPanel2);
+
+                JPanel emptyThirdPanel3 = new JPanel();
+                thirdPanel.add(emptyThirdPanel3);
+
+                JPanel cancelPanel = new JPanel();
+                thirdPanel.add(cancelPanel);
+
+                    JButton cancelButton = new JButton("X");
+                    cancelPanel.add(cancelButton);
+
+            JPanel shoppingcartPanel = new JPanel();
+            mainPanel.add(shoppingcartPanel);
+
+                JLabel checkoutLabel = new JLabel("Ostoskori");
+                shoppingcartPanel.add(checkoutLabel);
+        
+                double total_price = 50.20;
+                JLabel totalPriceLabel = new JLabel("Kokonaishinta: " + total_price + "€");
+                shoppingcartPanel.add(totalPriceLabel);
+
+                JButton buyButton = new JButton("Osta");
+                shoppingcartPanel.add(buyButton);
+
+        
+
+        setVisible(true);
+    }
+
     public static void main (String[] args)
     {
         /* ---- Declarations ---- */
         Shoppingcart shoppingcart = new Shoppingcart();
 
-        //luo ikkunan
-        JFrame frame = new JFrame("Shop Interface");
-        frame.setSize(1920, 1080);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        //luo napit
-        //normaali lippu
-        JButton normalTicketButton = new JButton("Normaali lippu");
-        frame.add(normalTicketButton);
-
-        JTextField normalNumberField = new JTextField(3);
-        frame.add(normalNumberField);
-
-        JButton normalReduceButton = new JButton("-");
-        frame.add(normalReduceButton);
-
-        JButton normalAddButton = new JButton("+");
-        frame.add(normalAddButton);
-
-
-        //lasten lippu
-        JButton childTicketButton = new JButton("Lasten lippu");
-        frame.add(childTicketButton);
-
-        JTextField childNumberField = new JTextField(3);
-        frame.add(childNumberField);
-
-        JButton childReduceButton = new JButton("-");
-        frame.add(childReduceButton);
-
-        JButton childAddButton = new JButton("+");
-        frame.add(childAddButton);
-
-        JLabel childNameLabel = new JLabel("Lapsen nimi:");
-        frame.add(childNameLabel);
-
-        JTextField childNameField = new JTextField(15);
-        frame.add(childNameField);
-
-        JCheckBox childNameLockCheckBox = new JCheckBox("Lukitse");
-        frame.add(childNameLockCheckBox);
-
-        JLabel childPhoneNumberLabel = new JLabel("Huoltajan puh:");
-        frame.add(childPhoneNumberLabel);
-
-        JTextField childPhoneNumberField = new JTextField(15);
-        frame.add(childPhoneNumberField);
-
-        JCheckBox childPhoneNumberLockCheckBox = new JCheckBox("Lukitse");
-        frame.add(childPhoneNumberLockCheckBox);
-
-
-        //alennus lippu
-        JButton discountTicketButton = new JButton("Alennus lippu");
-        frame.add(discountTicketButton);
-
-        JTextField discountNumberField = new JTextField(3);
-        frame.add(discountNumberField);
-
-        JButton discountReduceButton = new JButton("-");
-        frame.add(discountReduceButton);
-
-        JButton discountAddButton = new JButton("+");
-        frame.add(discountAddButton);
-
-        JLabel discountTypeLabel = new JLabel("Alennusryhmä:");
-        frame.add(discountTypeLabel);
-
-        String discountTypeList[] = {"Opiskelija", "Varusmies", "Eläkeläinen"};
-        final JComboBox<String> discountTypeBox = new JComboBox<String>(discountTypeList);
-        frame.add(discountTypeBox);
-
-
-        //ostoskori
-        JLabel checkoutLabel = new JLabel("Ostoskori");
-        frame.add(checkoutLabel);
-
-        double total_price = 50.20;
-        JLabel totalPriceLabel = new JLabel("Kokonaishinta: " + total_price + "€");
-        frame.add(totalPriceLabel);
-
-        JButton resetButton = new JButton("X");
-        frame.add(resetButton);
-
-        JButton buyButton = new JButton("Osta");
-        frame.add(buyButton);
-
-
-        //temp
-        JLabel label = new JLabel("Text");
-        frame.add(label);
-
-        //nappien actionit
-        normalTicketButton.addActionListener(
-            new ActionListener()
-            {
-                public void actionPerformed(ActionEvent e)
-                {
-                    //temp
-                    label.setText("BOOM!");
-                }
-            }
-        );
-
-        //tekee näkyväksi
-        frame.setLayout(new FlowLayout());
-        frame.setVisible(true);
+        new Main();
 
         //väliaikanen debug
         //kokeilen jos noitten settereitten kautta lois tän tiketin
