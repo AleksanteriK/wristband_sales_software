@@ -24,6 +24,10 @@ public class Main extends JFrame
         setSize(1920, 1080);
         setTitle("Shop Window");
 
+        Ticket normalTicket = null;
+        int normalTicketAmmount = 1;
+        final double NORMAL_PRICE = 26.00;
+
         JPanel mainPanel = new JPanel(new GridLayout(1, 5));
         add(mainPanel);
 
@@ -41,7 +45,20 @@ public class Main extends JFrame
                         {
                             public void actionPerformed(ActionEvent e)
                             {
-                                // lisää normaali lippu ostoskoriin
+                                if(normalTicket == null)
+                                {
+                                    Ticket normalTicket = new Ticket();
+                                    normalTicket.setAmount(normalTicketAmmount);
+                                    normalTicket.setType("Normaali");
+                                    normalTicket.setPrice(normalTicketAmmount * NORMAL_PRICE);
+                                }
+                                else
+                                {
+                                    int tempNormalTicketAmmount += normalTicketAmmount;
+                                    normalTicket.setAmount(tempNormalTicketAmmount);
+                                    normalTicket.setType("Normaali");
+                                    normalTicket.setPrice(normalTicketAmmount * NORMAL_PRICE);
+                                }
                             }
                         }
                     );
@@ -55,6 +72,17 @@ public class Main extends JFrame
                         JTextField normalNumberField = new JTextField(3);
                         normalButtonsPanel.add(normalNumberField);
 
+                        normalNumberField.addActionListener(
+                            new ActionListener()
+                            {
+                                public void actionPerformed(ActionEvent e)
+                                {
+                                    int numFieldNum = Integer.parseInt(normalNumberField.getText());
+                                    normalTicketAmmount = numFieldNum;
+                                }
+                            }
+                        );
+
                         JButton normalReduceButton = new JButton("-");
                         normalButtonsPanel.add(normalReduceButton);
 
@@ -63,7 +91,10 @@ public class Main extends JFrame
                             {
                                 public void actionPerformed(ActionEvent e)
                                 {
-                                    // -1 normaali lippu
+                                    if(normalTicketAmmount > 1)
+                                    {
+                                        normalTicketAmmount -= 1;
+                                    }
                                 }
                             }
                         );
@@ -76,7 +107,10 @@ public class Main extends JFrame
                             {
                                 public void actionPerformed(ActionEvent e)
                                 {
-                                    // +1 normaali lippu
+                                    if(normalTicketAmmount > 1)
+                                    {
+                                        normalTicketAmmount += 1;
+                                    }
                                 }
                             }
                         );
