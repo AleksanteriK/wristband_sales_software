@@ -200,6 +200,7 @@ public class Main extends JFrame
     {
         /* ---- Declarations ---- */
         Shoppingcart shoppingcart = new Shoppingcart();
+        Totalsales total_sales = new Totalsales();
 
         new Main();
 
@@ -233,15 +234,16 @@ public class Main extends JFrame
         shoppingcart.pending_tickets.add(dummyticket);
         //tän kutsun Count_total_price() voi joko lisätä esim Shoppingcartin omaan
         //printtimetodiin joka printtaa sen ostoskorin UI:hin esim
-        shoppingcart.Count_total_price();
+        shoppingcart.count_Total_price();
         //sit toi total_price tohon purchasen constructoriin tulee siitä ostoskorin
         //kokonaishinta muuttujasta
-        Purchase testi = new Purchase(shoppingcart.total_price, shoppingcart.pending_tickets);
+        Purchase testi = new Purchase(shoppingcart.total_price, shoppingcart.pending_tickets, total_sales);
 
         try {
             testi.setPurchase_number();
             testi.updatePurchase_number();
-            testi.PrintReceipt();
+            testi.printReceipt();
+            total_sales.update_Sales_state();
         } 
         
         catch (IOException e) {

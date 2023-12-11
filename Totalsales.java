@@ -19,9 +19,8 @@ class Totalsales {
     }
 
     //tällä haetaan tiedostosta edellinen kokonaismyyntimäärä ennenku sinne
-    //tulostetaan uus
+    //tulostetaan uus, KUTSTUTAAN update_Sales_state():ssa
     void getPrevious_sales_amount() {
-        double old_sales_amount = total_sales_amount;
         try (BufferedReader br = new BufferedReader(new FileReader(sales_file))) {
             //Skippaa ekat kaks riviä
             br.readLine();
@@ -68,6 +67,7 @@ class Totalsales {
             sales_writer.write(buytime.format(dtf));
             sales_writer.write("\r\n");
             sales_writer.write(Double.toString(total_sales_amount));
+            sales_writer.write("e");
             //kesken
         } 
         
