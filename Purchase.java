@@ -15,12 +15,15 @@ class Purchase {
     public File purchase_number_file;
     public File receipt_file;
 
-    Purchase (double total_price, ArrayList<Ticket> pending_tickets) {
+    Purchase (double total_price, ArrayList<Ticket> pending_tickets, Totalsales total_sales) {
         this.total_price = total_price;
 
         for (int i = 0; i < pending_tickets.size(); i++) {
             tickets.add(pending_tickets.get(i));
         }
+        //muutin ton nyt silleen et kun luodaan uus osto niin se lisää tonne Totalsales oliolle
+        //ton kokonaishinnan
+        total_sales.addTo_sales(total_price);
     }
     
     //tällä metodilla saadaan siis ostoksen numero (kinda id) päivitettyä
@@ -96,7 +99,7 @@ class Purchase {
         writer.close();
     }
 
-    void PrintReceipt() throws IOException {
+    void printReceipt() throws IOException {
         receipt_file = new File(receipt_file_name);
 
         if (receipt_file.createNewFile()) {
@@ -118,7 +121,7 @@ class Purchase {
             receipt_writer.write("\r\n");
             receipt_writer.write(buytime.format(dtf));
             receipt_writer.write("\r\n");
-            receipt_writer.write("Maksettu / Paid total:" + Double.toString(total_price) + "e");
+            receipt_writer.write("Maksettu / Paid total: " + Double.toString(total_price) + "e");
             receipt_writer.write("\r\n");
             receipt_writer.write("\r\n");
 

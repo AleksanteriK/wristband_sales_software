@@ -22,7 +22,7 @@ class Shoppingcart {
         }
     }*/
     
-    void Count_total_price() {
+    void count_Total_price() {
         for (int i = 0; i < pending_tickets.size(); i++) {
             Ticket ticket = pending_tickets.get(i);
             //kertoo sen hinnan jokasen lippuolion amountin arvolla
