@@ -30,12 +30,9 @@ class Shoppingcart {
     }*/
     
     void count_Total_price() {
+        total_price = 0;
         for (int i = 0; i < pending_tickets.size(); i++) {
-            total_price = 0;
-            Ticket ticket = pending_tickets.get(i);
-            //kertoo sen hinnan jokasen lippuolion amountin arvolla
-            total_price += ticket.price;
-            System.out.println(total_price);
+            total_price += pending_tickets.get(i).price;
         }
 
         //tähän voit tehä vaik swingille sen tulostusominaisuuden esim.

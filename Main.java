@@ -65,7 +65,7 @@ public class Main extends JFrame
         JPanel emptyChildNamePanel = new JPanel();
         JPanel discountTypePanel = new JPanel(new GridLayout(4, 1));
         JLabel discountTypeLabel = new JLabel("Alennusryhmä:");
-        String discountTypeList[] = {"Opiskelija", "Varusmies", "Eläkeläinen", "Kampanja", "Extra"};
+        String discountTypeList[] = {"-Valitse-", "Opiskelija", "Varusmies", "Eläkeläinen", "Kampanja", "Extra"};
         final JComboBox<String> discountTypeBox = new JComboBox<String>(discountTypeList);
         JPanel emptyDiscountTypePanel1 = new JPanel();
         JPanel emptyDiscountTypePanel2 = new JPanel();
