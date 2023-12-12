@@ -83,7 +83,7 @@ public class Main extends JFrame
         JPanel emptyThirdPanel3 = new JPanel();
         JPanel cancelPanel = new JPanel();
         JButton cancelButton = new JButton("X");
-        JPanel shoppingcartPanel = new JPanel();
+        JPanel shoppingcartPanel = new JPanel(new GridLayout(3, 1));
         JLabel checkoutLabel = new JLabel("Ostoskori");
         JLabel totalPriceLabel = new JLabel("Kokonaishinta: " + shoppingcart.get_Total_price() + "€");
         JButton buyButton = new JButton("Maksa");
@@ -246,7 +246,7 @@ public class Main extends JFrame
                                 }
                                 else
                                 {
-                                    JOptionPane.showMessageDialog(mainPanel, e, "Muista lisätä lapsen nimi ja huoltajan puhelinnumero", JOptionPane.WARNING_MESSAGE);
+                                    JOptionPane.showMessageDialog(mainPanel, "Muista lisätä lapsen nimi ja huoltajan puhelinnumero", "Muistutus",JOptionPane.WARNING_MESSAGE);
                                 }
                             }
                         }
