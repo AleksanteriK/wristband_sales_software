@@ -138,11 +138,23 @@ public class Main extends JFrame
                                 totalPriceLabel.setText("Kokonaishinta: " + shoppingcart.get_Total_price() + "€");
 
                                 checkoutLabel.setText("<html>Ostoskori<br/><br/>");
-                                for(int i = 0; i < shoppingcart.pending_tickets.size(); i++)
-                                {
-                                    checkoutLabel.setText(checkoutLabel.getText() + shoppingcart.pending_tickets.get(i).getType() + " " + shoppingcart.pending_tickets.get(i).getAmount() + " " + shoppingcart.pending_tickets.get(i).getPrice() + "<br/>");
-                                }
-                                checkoutLabel.setText(checkoutLabel.getText() + "</html>");
+                                    for(int i = 0; i < shoppingcart.pending_tickets.size(); i++)
+                                    {
+                                        checkoutLabel.setText(checkoutLabel.getText() + shoppingcart.pending_tickets.get(i).getType() + " ");
+
+                                        if(shoppingcart.pending_tickets.get(i).getType() == "Lapsi")
+                                        {
+                                            checkoutLabel.setText(checkoutLabel.getText() + "\"" + shoppingcart.pending_tickets.get(i).getCustomer_name() + " " + shoppingcart.pending_tickets.get(i).getPhone_number() + "\"" + " ");
+                                        }
+
+                                        if(shoppingcart.pending_tickets.get(i).getType() == "Alennus")
+                                        {
+                                            checkoutLabel.setText(checkoutLabel.getText() + shoppingcart.pending_tickets.get(i).getDiscountType() +" ");
+                                        }
+
+                                        checkoutLabel.setText(checkoutLabel.getText() +  shoppingcart.pending_tickets.get(i).getAmount() + " " + shoppingcart.pending_tickets.get(i).getPrice() + "<br/>");
+                                    }
+                                    checkoutLabel.setText(checkoutLabel.getText() + "</html>");
                             }
                         }
                     );
@@ -249,7 +261,7 @@ public class Main extends JFrame
 
                                         if(shoppingcart.pending_tickets.get(i).getType() == "Lapsi")
                                         {
-                                            checkoutLabel.setText(checkoutLabel.getText() + shoppingcart.pending_tickets.get(i).getCustomer_name() + " " + shoppingcart.pending_tickets.get(i).getPhone_number() +" ");
+                                            checkoutLabel.setText(checkoutLabel.getText() + "\"" + shoppingcart.pending_tickets.get(i).getCustomer_name() + " " + shoppingcart.pending_tickets.get(i).getPhone_number() + "\"" + " ");
                                         }
 
                                         if(shoppingcart.pending_tickets.get(i).getType() == "Alennus")
@@ -370,11 +382,23 @@ public class Main extends JFrame
                                 totalPriceLabel.setText("Kokonaishinta: " + shoppingcart.get_Total_price() + "€");
 
                                 checkoutLabel.setText("<html>Ostoskori<br/><br/>");
-                                for(int i = 0; i < shoppingcart.pending_tickets.size(); i++)
-                                {
-                                    checkoutLabel.setText(checkoutLabel.getText() + shoppingcart.pending_tickets.get(i).getType() + " " + shoppingcart.pending_tickets.get(i).getAmount() + " " + shoppingcart.pending_tickets.get(i).getPrice() + "<br/>");
-                                }
-                                checkoutLabel.setText(checkoutLabel.getText() + "</html>");
+                                    for(int i = 0; i < shoppingcart.pending_tickets.size(); i++)
+                                    {
+                                        checkoutLabel.setText(checkoutLabel.getText() + shoppingcart.pending_tickets.get(i).getType() + " ");
+
+                                        if(shoppingcart.pending_tickets.get(i).getType() == "Lapsi")
+                                        {
+                                            checkoutLabel.setText(checkoutLabel.getText() + "\"" + shoppingcart.pending_tickets.get(i).getCustomer_name() + " " + shoppingcart.pending_tickets.get(i).getPhone_number() + "\"" + " ");
+                                        }
+
+                                        if(shoppingcart.pending_tickets.get(i).getType() == "Alennus")
+                                        {
+                                            checkoutLabel.setText(checkoutLabel.getText() + shoppingcart.pending_tickets.get(i).getDiscountType() +" ");
+                                        }
+
+                                        checkoutLabel.setText(checkoutLabel.getText() +  shoppingcart.pending_tickets.get(i).getAmount() + " " + shoppingcart.pending_tickets.get(i).getPrice() + "<br/>");
+                                    }
+                                    checkoutLabel.setText(checkoutLabel.getText() + "</html>");
                             }
                         }
                     );
