@@ -1,6 +1,7 @@
 package project;
 
-class Ticket {
+class Ticket
+{
     public int amount;
     public String type;
     public double price;
@@ -17,23 +18,28 @@ class Ticket {
         this.price = price;
     }*/
 
-    void setAmount(int amount) {
+    void setAmount(int amount)
+    {
         this.amount = amount;
     }
 
-    void setType(String type) {
+    void setType(String type)
+    {
         this.type = type;
     }
 
-    void setPrice(double price) {
+    void setPrice(double price)
+    {
         this.price = price;
     }
 
-    void setCustomer_name(String new_customer_name) {
+    void setCustomer_name(String new_customer_name)
+    {
         this.customer_name = new_customer_name;
     }
 
-    void setPhone_number(String new_phone_number) {
+    void setPhone_number(String new_phone_number)
+    {
         this.phone_number = new_phone_number;
     }
 
@@ -42,7 +48,8 @@ class Ticket {
         this.discountType = new_discount_type;
     }
 
-    double getPrice() {
+    double getPrice()
+    {
         return price;
     }
 
@@ -51,7 +58,8 @@ class Ticket {
         return type;
     }
 
-    int getAmount() {
+    int getAmount()
+    {
         return amount;
     }
 
@@ -70,16 +78,19 @@ class Ticket {
         return phone_number;
     }
 
-    void addAmount(int add_amount) {
+    void addAmount(int add_amount)
+    {
         amount += add_amount;
     }
 
-    void addPrice(double add_price) {
+    void addPrice(double add_price)
+    {
         price += add_price;
     }
 
     //tän avulla pystyy tulostamaan kuittiin ja muihin lipun tietoja
-    public String ticket_toString() {
+    public String ticket_toString()
+    {
         return "Amount / Määrä: " + amount + ", Type / Lipputyyppi: " + type + ", Price / hinta: " + price;
     }
 

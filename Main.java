@@ -493,6 +493,8 @@ public class Main extends JFrame
                             public void actionPerformed(ActionEvent e)
                             {
                                 shoppingcart.empty_Shopping_cart();
+                                checkoutLabel.setText("Ostoskori");
+                                totalPriceLabel.setText("Kokonaishinta: " + shoppingcart.get_Total_price() + "€");
                             }
                         }
                     );
@@ -516,14 +518,16 @@ public class Main extends JFrame
                             {
                                 // tulostaa kuitin
                                 Purchase purchase = new Purchase(shoppingcart.get_Total_price(), shoppingcart.pending_tickets, total_sales);
-                                try {
+                                try
+                                {
                                     purchase.setPurchase_number();
                                     purchase.updatePurchase_number();
                                     purchase.printReceipt();
                                     total_sales.update_Sales_state();
                                 } 
                                 
-                                catch (IOException e) {
+                                catch(IOException e)
+                                {
                                     e.printStackTrace();
                                 }
                             }

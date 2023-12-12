@@ -8,17 +8,20 @@ import java.util.Scanner;
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
 
-class Purchase {
+class Purchase
+{
     public ArrayList<Ticket> tickets = new ArrayList<>();
     public String purchase_number_file_name = "ostokset_maara.txt";
     public String receipt_file_name = "kuitti.txt";
     public File purchase_number_file;
     public File receipt_file;
 
-    Purchase (double total_price, ArrayList<Ticket> pending_tickets, Totalsales total_sales) {
+    Purchase(double total_price, ArrayList<Ticket> pending_tickets, Totalsales total_sales)
+    {
         this.total_price = total_price;
 
-        for (int i = 0; i < pending_tickets.size(); i++) {
+        for(int i = 0; i < pending_tickets.size(); i++)
+        {
             tickets.add(pending_tickets.get(i));
         }
         //muutin ton nyt silleen et kun luodaan uus osto niin se lisää tonne Totalsales oliolle
@@ -29,18 +32,23 @@ class Purchase {
     //tällä metodilla saadaan siis ostoksen numero (kinda id) päivitettyä
     //tän ostosluokan propertyyn purchase_number, kyseinen löytyy siis tosta
     //tekstitiedostosta josta se lukee sen ja assignaa sen
-    String setPurchase_number() {
-        try {
+    String setPurchase_number()
+    {
+        try
+        {
             purchase_number_file = new File(purchase_number_file_name);
 
             //nyt myös luo ton tiedoston jos ei oo olemassa, unohtu aiemmin laittaa
-            if (!purchase_number_file.exists()) {
+            if(!purchase_number_file.exists())
+            {
 
-                try {
+                try
+                {
                     purchase_number_file.createNewFile();
                 }
                 
-                catch (IOException e) {
+                catch(IOException e)
+                {
                     e.printStackTrace();
                     return "error creating the file";
                 }
@@ -48,20 +56,24 @@ class Purchase {
 
             purchase_number_file_scanner = new Scanner(purchase_number_file);
 
-            if (purchase_number_file_scanner.hasNext()) {
+            if(purchase_number_file_scanner.hasNext())
+            {
                 String content = purchase_number_file_scanner.next();
 
-                try {
+                try
+                {
                     purchase_number = Integer.parseInt(content);
                 } 
                 
-                catch (NumberFormatException e) {
+                catch(NumberFormatException e)
+                {
                     purchase_number_file_scanner.close();
                     return "Error reading number from file";
                 }
             } 
             
-            else {
+            else
+            {
                 purchase_number_file_scanner.close();
                 return "file empty";
             }
@@ -69,7 +81,8 @@ class Purchase {
             purchase_number_file_scanner.close();
         } 
         
-        catch (FileNotFoundException e) {
+        catch(FileNotFoundException e)
+        {
             e.printStackTrace(); // or log the exception
             return "file not found";
         }
@@ -78,17 +91,21 @@ class Purchase {
     }
 
     //tällä metodilla taas sitten se uus seuraava ostosnumero päivitetään tiedostoon
-    void updatePurchase_number() throws IOException {
+    void updatePurchase_number() throws IOException
+    {
         next_purchase_number = purchase_number + 1;
         purchase_number_file = new File(purchase_number_file_name);
     
         //tiedoston olemassaolochecki
-        if (!purchase_number_file.exists()) {
-            try {
+        if(!purchase_number_file.exists())
+        {
+            try
+            {
                 purchase_number_file.createNewFile();
             } 
             
-            catch (IOException e) {
+            catch (IOException e)
+            {
                 e.printStackTrace();
             }
         }
@@ -99,21 +116,25 @@ class Purchase {
         writer.close();
     }
 
-    void printReceipt() throws IOException {
+    void printReceipt() throws IOException
+    {
         receipt_file = new File(receipt_file_name);
 
-        if (receipt_file.createNewFile()) {
+        if(receipt_file.createNewFile())
+        {
             System.out.println("File created");
             //'false' enablee päällekirjotuksen
             receipt_writer = new FileWriter(receipt_file_name, false);
         } 
         
-        else {
+        else
+        {
             //'false' enablee päällekirjotuksen
             receipt_writer = new FileWriter(receipt_file_name, false);
         }
 
-        try {
+        try
+        {
             buytime = LocalDateTime.now();
             receipt_writer.write("Kuitti_" + purchase_number + " / Receipt_" + purchase_number);
             receipt_writer.write("\r\n");
@@ -125,7 +146,8 @@ class Purchase {
             receipt_writer.write("\r\n");
             receipt_writer.write("\r\n");
 
-            for (int i = 0; i < tickets.size(); i++) {
+            for(int i = 0; i < tickets.size(); i++)
+            {
                 receipt_writer.write(tickets.get(i).ticket_toString());
                 receipt_writer.write("\r\n");
             }
@@ -142,12 +164,14 @@ class Purchase {
             receipt_writer.write(Double.toString(total_price) + "e    ");
         } 
         
-        finally {
+        finally
+        {
             receipt_writer.close();
         }
     }
 
-    int getPurchase_number() {
+    int getPurchase_number()
+    {
         return purchase_number;
     }
 

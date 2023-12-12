@@ -1,7 +1,8 @@
 package project;
 import java.util.ArrayList;
 
-class Shoppingcart {
+class Shoppingcart
+{
     public ArrayList<Ticket> pending_tickets = new ArrayList<>();
     public double total_price;
     public boolean hasNormalTicket;
@@ -19,11 +20,12 @@ class Shoppingcart {
 
     //tällä voi sit tyhjentää ostoskorin arraylistin lipuista
     //ja nollata total_pricen
-    void empty_Shopping_cart() {
+    void empty_Shopping_cart()
+    {
         pending_tickets.clear();
         total_price = 0;
         hasNormalTicket = false;
-        normalTicketAmount = false;
+        normalTicketAmount = 0;
         ticketPosition = 0;
         hasChildTicket = false;
         childTicketAmount = 0;
@@ -38,7 +40,8 @@ class Shoppingcart {
         }
     }*/
     
-    void count_Total_price() {
+    void count_Total_price()
+    {
         total_price = 0;
         for (int i = 0; i < pending_tickets.size(); i++) {
             total_price += pending_tickets.get(i).price;
@@ -52,7 +55,8 @@ class Shoppingcart {
         return total_price;
     }
 
-    void printShoppingcart() {
+    void printShoppingcart()
+    {
         //jos haluut tehä erikseen metodin tän tulostukselle esim
         //sen totalpricen täytyy olla sit property
     }
