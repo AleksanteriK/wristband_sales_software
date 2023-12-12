@@ -219,6 +219,8 @@ public class Main extends JFrame
                                             childTicket.setType("Lapsi");
                                             childTicket.setAmount(shoppingcart.getChildTicketAmount());
                                             childTicket.setPrice(shoppingcart.getChildTicketAmount() * CHILD_PRICE);
+                                            childTicket.setCustomer_name(childNameField.getText());
+                                            childTicket.setPhone_number(childPhoneField.getText());
                                             shoppingcart.pending_tickets.add(childTicket);
                                         }
                                     }
@@ -228,6 +230,8 @@ public class Main extends JFrame
                                         childTicket.setType("Lapsi");
                                         childTicket.setAmount(shoppingcart.getChildTicketAmount());
                                         childTicket.setPrice(shoppingcart.getChildTicketAmount() * CHILD_PRICE);
+                                        childTicket.setCustomer_name(childNameField.getText());
+                                        childTicket.setPhone_number(childPhoneField.getText());
                                         shoppingcart.pending_tickets.add(childTicket);
                                     }
 
@@ -241,7 +245,19 @@ public class Main extends JFrame
                                     checkoutLabel.setText("<html>Ostoskori<br/><br/>");
                                     for(int i = 0; i < shoppingcart.pending_tickets.size(); i++)
                                     {
-                                        checkoutLabel.setText(checkoutLabel.getText() + shoppingcart.pending_tickets.get(i).getType() + " " + shoppingcart.pending_tickets.get(i).getAmount() + " " + shoppingcart.pending_tickets.get(i).getPrice() + "<br/>");
+                                        checkoutLabel.setText(checkoutLabel.getText() + shoppingcart.pending_tickets.get(i).getType() + " ");
+
+                                        if(shoppingcart.pending_tickets.get(i).getType() == "Lapsi")
+                                        {
+                                            checkoutLabel.setText(checkoutLabel.getText() + shoppingcart.pending_tickets.get(i).getCustomer_name() + " " + shoppingcart.pending_tickets.get(i).getPhone_number() +" ");
+                                        }
+
+                                        if(shoppingcart.pending_tickets.get(i).getType() == "Alennus")
+                                        {
+                                            checkoutLabel.setText(checkoutLabel.getText() + shoppingcart.pending_tickets.get(i).getDiscountType() +" ");
+                                        }
+
+                                        checkoutLabel.setText(checkoutLabel.getText() +  shoppingcart.pending_tickets.get(i).getAmount() + " " + shoppingcart.pending_tickets.get(i).getPrice() + "<br/>");
                                     }
                                     checkoutLabel.setText(checkoutLabel.getText() + "</html>");
 
@@ -313,10 +329,10 @@ public class Main extends JFrame
 
                                 if(shoppingcart.getHasDiscountTicket() == true)
                                 {
+                                    shoppingcart.setTicketFound(false);
+
                                     for(int i = 0; i < shoppingcart.pending_tickets.size(); i++)
                                     {
-                                        shoppingcart.setTicketFound(false);
-
                                         if(shoppingcart.pending_tickets.get(i).getType() == "Alennus"
                                         && shoppingcart.pending_tickets.get(i).getDiscountType() == discountTypeBox.getSelectedItem().toString())
                                         {
@@ -324,16 +340,16 @@ public class Main extends JFrame
                                             shoppingcart.pending_tickets.get(i).addPrice(shoppingcart.getDiscountTicketAmount() * DISCOUNT_PRICE);
                                             shoppingcart.setTicketFound(true);
                                         }
+                                    }
 
-                                        if(shoppingcart.getTicketFound() == false)
-                                        {
-                                            Ticket discountTicket = new Ticket();
-                                            discountTicket.setType("Alennus");
-                                            discountTicket.setDiscountType(discountTypeBox.getSelectedItem().toString());
-                                            discountTicket.setAmount(shoppingcart.getDiscountTicketAmount());
-                                            discountTicket.setPrice(shoppingcart.getDiscountTicketAmount() * DISCOUNT_PRICE);
-                                            shoppingcart.pending_tickets.add(discountTicket);
-                                        }
+                                    if(shoppingcart.getTicketFound() == false)
+                                    {
+                                        Ticket discountTicket = new Ticket();
+                                        discountTicket.setType("Alennus");
+                                        discountTicket.setDiscountType(discountTypeBox.getSelectedItem().toString());
+                                        discountTicket.setAmount(shoppingcart.getDiscountTicketAmount());
+                                        discountTicket.setPrice(shoppingcart.getDiscountTicketAmount() * DISCOUNT_PRICE);
+                                        shoppingcart.pending_tickets.add(discountTicket);
                                     }
                                 }
                                 else
