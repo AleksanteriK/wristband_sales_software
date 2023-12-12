@@ -32,7 +32,7 @@ class Shoppingcart {
         for (int i = 0; i < pending_tickets.size(); i++) {
             Ticket ticket = pending_tickets.get(i);
             //kertoo sen hinnan jokasen lippuolion amountin arvolla
-            total_price += ticket.price * ticket.amount;
+            total_price += ticket.price;
             System.out.println(total_price);
         }
 

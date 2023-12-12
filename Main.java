@@ -142,6 +142,13 @@ public class Main extends JFrame
 
                                 shoppingcart.count_Total_price();
                                 totalPriceLabel.setText("Kokonaishinta: " + shoppingcart.get_Total_price() + "€");
+
+                                checkoutLabel.setText("<html>Ostoskori<br/><br/>");
+                                for(int i = 0; i < shoppingcart.pending_tickets.size(); i++)
+                                {
+                                    checkoutLabel.setText(checkoutLabel.getText() + shoppingcart.pending_tickets.get(i).getType() + " " + shoppingcart.pending_tickets.get(i).getAmount() + " " + shoppingcart.pending_tickets.get(i).getPrice() + "<br/>");
+                                }
+                                checkoutLabel.setText(checkoutLabel.getText() + "</html>");
                             }
                         }
                     );
@@ -232,6 +239,13 @@ public class Main extends JFrame
 
                                     shoppingcart.count_Total_price();
                                     totalPriceLabel.setText("Kokonaishinta: " + shoppingcart.get_Total_price() + "€");
+
+                                    checkoutLabel.setText("<html>Ostoskori<br/><br/>");
+                                    for(int i = 0; i < shoppingcart.pending_tickets.size(); i++)
+                                    {
+                                        checkoutLabel.setText(checkoutLabel.getText() + shoppingcart.pending_tickets.get(i).getType() + " " + shoppingcart.pending_tickets.get(i).getAmount() + " " + shoppingcart.pending_tickets.get(i).getPrice() + "<br/>");
+                                    }
+                                    checkoutLabel.setText(checkoutLabel.getText() + "</html>");
 
                                     // VAROITUS!!! jos nää on merkattuna nii tietokone räjähtää
                                     if(childNameLockCheckBox.isSelected() == false)
@@ -336,6 +350,13 @@ public class Main extends JFrame
 
                                 shoppingcart.count_Total_price();
                                 totalPriceLabel.setText("Kokonaishinta: " + shoppingcart.get_Total_price() + "€");
+
+                                checkoutLabel.setText("<html>Ostoskori<br/><br/>");
+                                for(int i = 0; i < shoppingcart.pending_tickets.size(); i++)
+                                {
+                                    checkoutLabel.setText(checkoutLabel.getText() + shoppingcart.pending_tickets.get(i).getType() + " " + shoppingcart.pending_tickets.get(i).getAmount() + " " + shoppingcart.pending_tickets.get(i).getPrice() + "<br/>");
+                                }
+                                checkoutLabel.setText(checkoutLabel.getText() + "</html>");
                             }
                         }
                     );
