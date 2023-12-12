@@ -30,6 +30,7 @@ class Shoppingcart {
     
     void count_Total_price() {
         for (int i = 0; i < pending_tickets.size(); i++) {
+            total_price = 0;
             Ticket ticket = pending_tickets.get(i);
             //kertoo sen hinnan jokasen lippuolion amountin arvolla
             total_price += ticket.price;
