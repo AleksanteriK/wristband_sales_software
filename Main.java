@@ -3,19 +3,12 @@ package project;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-//import java.awt.event.ItemEvent;
-//import java.awt.FlowLayout;
-//import java.util.ArrayList;
-//import java.io.FileNotFoundException;
-//import java.io.IOException;
+import java.awt.event.ItemEvent;
+import java.awt.FlowLayout;
+import java.util.ArrayList;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.awt.GridLayout;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 public class Main extends JFrame
 {
@@ -28,6 +21,7 @@ public class Main extends JFrame
         shoppingcart.setHasNormalTicket(false);
         shoppingcart.setHasChildTicket(false);
         shoppingcart.setHasDiscountTicket(false);
+        Totalsales total_sales = new Totalsales();
 
         final double NORMAL_PRICE = 26.00;
         final double CHILD_PRICE = 16.00;
@@ -273,7 +267,6 @@ public class Main extends JFrame
                                     }
                                     checkoutLabel.setText(checkoutLabel.getText() + "</html>");
 
-                                    // VAROITUS!!! jos nää on merkattuna nii tietokone räjähtää
                                     if(childNameLockCheckBox.isSelected() == false)
                                     {
                                         childNameField.setText("");
@@ -522,6 +515,17 @@ public class Main extends JFrame
                             if(pay == JOptionPane.YES_OPTION)
                             {
                                 // tulostaa kuitin
+                                Purchase purchase = new Purchase(shoppingcart.get_Total_price(), shoppingcart.pending_tickets, total_sales);
+                                try {
+                                    purchase.setPurchase_number();
+                                    purchase.updatePurchase_number();
+                                    purchase.printReceipt();
+                                    total_sales.update_Sales_state();
+                                } 
+                                
+                                catch (IOException e) {
+                                    e.printStackTrace();
+                                }
                             }
                         }
                     }
@@ -536,7 +540,7 @@ public class Main extends JFrame
     {
         /* ---- Declarations ---- */
         
-        //Totalsales total_sales = new Totalsales();
+        
 
         new Main();
 
