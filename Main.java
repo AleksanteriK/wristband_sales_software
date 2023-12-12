@@ -411,7 +411,7 @@ public class Main extends JFrame
 
                         discountButtonsPanel.add(discountReduceButton);
 
-                        discountButton.addActionListener(
+                        discountReduceButton.addActionListener(
                             new ActionListener()
                             {
                                 public void actionPerformed(ActionEvent e)
@@ -427,7 +427,7 @@ public class Main extends JFrame
 
                         discountButtonsPanel.add(discountAddButton);
 
-                        discountButton.addActionListener(
+                        discountAddButton.addActionListener(
                             new ActionListener()
                             {
                                 public void actionPerformed(ActionEvent e)
