@@ -518,6 +518,7 @@ public class Main extends JFrame
                             {
                                 // tulostaa kuitin
                                 Purchase purchase = new Purchase(shoppingcart.get_Total_price(), shoppingcart.pending_tickets, total_sales);
+
                                 try
                                 {
                                     purchase.setPurchase_number();
@@ -534,7 +535,6 @@ public class Main extends JFrame
                         }
                     }
                 );
-
         
 
         setVisible(true);
