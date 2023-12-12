@@ -3,11 +3,11 @@ package project;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.FlowLayout;
-import java.util.ArrayList;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+//import java.awt.event.ItemEvent;
+//import java.awt.FlowLayout;
+//import java.util.ArrayList;
+//import java.io.FileNotFoundException;
+//import java.io.IOException;
 import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -26,6 +26,8 @@ public class Main extends JFrame
 
         Shoppingcart shoppingcart = new Shoppingcart();
         shoppingcart.setHasNormalTicket(false);
+        shoppingcart.setHasChildTicket(false);
+        shoppingcart.setHasDiscountTicket(false);
 
         final double NORMAL_PRICE = 26.00;
         final double CHILD_PRICE = 16.00;
@@ -117,14 +119,6 @@ public class Main extends JFrame
                                             shoppingcart.pending_tickets.get(i).addAmount(shoppingcart.getNormalTicketAmount());
                                             shoppingcart.pending_tickets.get(i).addPrice(shoppingcart.getNormalTicketAmount() * NORMAL_PRICE);
                                         }
-                                        else
-                                        {
-                                            Ticket normalTicket = new Ticket();
-                                            normalTicket.setType("Normaali");
-                                            normalTicket.setAmount(shoppingcart.getNormalTicketAmount());
-                                            normalTicket.setPrice(shoppingcart.getNormalTicketAmount() * NORMAL_PRICE);
-                                            shoppingcart.pending_tickets.add(normalTicket);
-                                        }
                                     }
                                 }
                                 else
@@ -205,6 +199,8 @@ public class Main extends JFrame
 
                                     if(shoppingcart.getHasChildTicket() == true)
                                     {
+                                        shoppingcart.setTicketFound(false);
+
                                         for(int i = 0; i < shoppingcart.pending_tickets.size(); i++)
                                         {
                                             if(shoppingcart.pending_tickets.get(i).getType() == "Lapsi"
@@ -213,15 +209,17 @@ public class Main extends JFrame
                                             {
                                                 shoppingcart.pending_tickets.get(i).addAmount(shoppingcart.getChildTicketAmount());
                                                 shoppingcart.pending_tickets.get(i).addPrice(shoppingcart.getChildTicketAmount() * CHILD_PRICE);
+                                                shoppingcart.setTicketFound(true);
                                             }
-                                            else
-                                            {
-                                                Ticket childTicket = new Ticket();
-                                                childTicket.setType("Lapsi");
-                                                childTicket.setAmount(shoppingcart.getChildTicketAmount());
-                                                childTicket.setPrice(shoppingcart.getChildTicketAmount() * CHILD_PRICE);
-                                                shoppingcart.pending_tickets.add(childTicket);
-                                            }
+                                        }
+
+                                        if(shoppingcart.getTicketFound() == false)
+                                        {
+                                            Ticket childTicket = new Ticket();
+                                            childTicket.setType("Lapsi");
+                                            childTicket.setAmount(shoppingcart.getChildTicketAmount());
+                                            childTicket.setPrice(shoppingcart.getChildTicketAmount() * CHILD_PRICE);
+                                            shoppingcart.pending_tickets.add(childTicket);
                                         }
                                     }
                                     else
@@ -317,13 +315,17 @@ public class Main extends JFrame
                                 {
                                     for(int i = 0; i < shoppingcart.pending_tickets.size(); i++)
                                     {
+                                        shoppingcart.setTicketFound(false);
+
                                         if(shoppingcart.pending_tickets.get(i).getType() == "Alennus"
                                         && shoppingcart.pending_tickets.get(i).getDiscountType() == discountTypeBox.getSelectedItem().toString())
                                         {
                                             shoppingcart.pending_tickets.get(i).addAmount(shoppingcart.getDiscountTicketAmount());
                                             shoppingcart.pending_tickets.get(i).addPrice(shoppingcart.getDiscountTicketAmount() * DISCOUNT_PRICE);
+                                            shoppingcart.setTicketFound(true);
                                         }
-                                        else
+
+                                        if(shoppingcart.getTicketFound() == false)
                                         {
                                             Ticket discountTicket = new Ticket();
                                             discountTicket.setType("Alennus");
@@ -494,7 +496,7 @@ public class Main extends JFrame
     {
         /* ---- Declarations ---- */
         
-        Totalsales total_sales = new Totalsales();
+        //Totalsales total_sales = new Totalsales();
 
         new Main();
 

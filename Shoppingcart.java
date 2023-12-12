@@ -11,6 +11,7 @@ class Shoppingcart {
     public int childTicketAmount;
     public boolean hasDiscountTicket;
     public int discountTicketAmount;
+    public boolean ticketFound;
 
     //aattelin et ei tee constructoria tälle jos luo tän
     //olion mainin alussa niin ei tuu ns ain sit luotua
@@ -85,6 +86,11 @@ class Shoppingcart {
         this.discountTicketAmount = new_discountTicketAmount;
     }
 
+    void setTicketFound(boolean new_ticketFound)
+    {
+        this.ticketFound = new_ticketFound;
+    }
+
     boolean getHasNormalTicket()
     {
         return hasNormalTicket;
@@ -120,13 +126,8 @@ class Shoppingcart {
         return discountTicketAmount;
     }
 
-    void reduceNormalTicketAmount(int reduce_normalTicketAmount)
+    boolean getTicketFound()
     {
-        normalTicketAmount -= reduce_normalTicketAmount;
-    }
-
-    void addNormalTicketAmount(int add_normalTicketAmount)
-    {
-        normalTicketAmount += add_normalTicketAmount;
+        return ticketFound;
     }
 }
