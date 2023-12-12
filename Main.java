@@ -525,10 +525,12 @@ public class Main extends JFrame
                                     purchase.updatePurchase_number();
                                     purchase.printReceipt();
                                     total_sales.update_Sales_state();
-                                } 
-                                catch(IOException e)
+                                    purchase.update_Day_sales(shoppingcart.pending_tickets);
+                                }
+
+                                catch(IOException a)
                                 {
-                                    e.printStackTrace();
+                                    a.printStackTrace();
                                 }
                             }
                         }
@@ -542,62 +544,6 @@ public class Main extends JFrame
     public static void main (String[] args)
     {
         /* ---- Declarations ---- */
-        
-        
-
         new Main();
-
-        /*
-        //väliaikanen debug
-        //kokeilen jos noitten settereitten kautta lois tän tiketin
-        //esim aina kun sit on valittu se myytävä lippu
-        //niin se voi sit olla modulaarisempaa ehkä asettaa sille
-        //settereitten kautta properteihin arvoja kun et kaikki
-        //kerralla yhteen constructoriin
-        //lähinnä välttäen sen ongelman esim et kun jos luo
-        //sen lasten lipun johon tarvitaan myös nimi ja puhnro
-        //niin sitä ei tarvii aina assignata sit myös normaaleille
-        //lipuille. Toki senki vois myös säätää erikseen et
-        //constructorilla on vaan tietyt parametrit
-        //ja sit on setterit erikseen puhnrolle ja nimelle
-
-        //ymmärsin näin kun luin muutaman päivän jälkeen uudestaan
-        //sitä UI suunnitelmaa, niin tää amount tulee todennäkösesti
-        //sitten siitä sen normaali, lapsi/alennus lipun napin kanssa
-        //olevasta siitä määrästä, eli nääkin lippuoliot periaattees
-        //voi sisältää useemman saman lipun kerralla.
-        //mua ei ainakaan haittaa tää tyyli
-        int amount = 3; //eli montako normaali tai lapsi tai alennus lippua
-        String type = "normaali"; //tää tulee siitä napista varmaa kans (actionlistener)
-        double price = 20;
-        Ticket dummyticket = new Ticket(); //ei constructoria
-        //tän tapahtuman jälkeen varmaan sit menee siihen ostoskorin arraylistiin nää
-        dummyticket.setAmount(amount);
-        dummyticket.setType(type);
-        dummyticket.setPrice(price);
-        shoppingcart.pending_tickets.add(dummyticket);
-        //tän kutsun Count_total_price() voi joko lisätä esim Shoppingcartin omaan
-        //printtimetodiin joka printtaa sen ostoskorin UI:hin esim
-        shoppingcart.count_Total_price();
-        //sit toi total_price tohon purchasen constructoriin tulee siitä ostoskorin
-        //kokonaishinta muuttujasta
-        Purchase testi = new Purchase(shoppingcart.total_price, shoppingcart.pending_tickets, total_sales);
-
-        try {
-            testi.setPurchase_number();
-            testi.updatePurchase_number();
-            testi.printReceipt();
-            total_sales.update_Sales_state();
-        } 
-        
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        /*Mul tuli myös sellanen idea et jos jaksetaan / halutaan
-         * niin tehäänkö sellanen ominaisuus et näitten lippujen
-         * hintoja pystyy käyttäjä muuttaan jollain "super"
-         * oikeuksilla?
-         */
     }
 }

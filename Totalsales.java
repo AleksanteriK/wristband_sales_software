@@ -34,19 +34,23 @@ class Totalsales
             if(line != null && !line.isEmpty())
             {
                 try
-                {
-                    total_sales_amount = total_sales_amount + Double.parseDouble(line.trim());
+                {   //ignoraa muut merkit
+                    String numericPart = line.replaceAll("[^\\d.]", "");
+                    total_sales_amount = total_sales_amount + Double.parseDouble(numericPart.trim());
                 } 
+
                 catch(NumberFormatException e)
                 {
                     System.err.println("Error parsing sales amount. The file contains an invalid value on the third line: " + line);
                 }
             } 
+
             else
             {
                 System.out.println("No previous sales amount found in the file.");
             }
-        } 
+        }
+
         catch(IOException e)
         {
             e.printStackTrace();
@@ -62,7 +66,8 @@ class Totalsales
             System.out.println("File created");
             //'false' enablee päällekirjotuksen
             sales_writer = new FileWriter(sales_file_name);
-        } 
+        }
+         
         else
         {
             sales_writer = new FileWriter(sales_file_name);
@@ -76,7 +81,7 @@ class Totalsales
             sales_writer.write(buytime.format(dtf));
             sales_writer.write("\r\n");
             sales_writer.write(Double.toString(total_sales_amount));
-            sales_writer.write("e");
+            sales_writer.write("€");
             //kesken
         } 
         

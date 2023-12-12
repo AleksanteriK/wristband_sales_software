@@ -8,15 +8,6 @@ class Ticket
     public String customer_name;
     public String phone_number;
     public String discountType;
-    //jotta sai ton shoppincart luokassa yhteishinnan laskun toimii, täyty tehä vähä temppuja
-    //niin tein täst luokast nyt sellasen et täl ei oo vakioconstructoria vaa settereiden
-    //kautta sit asettaa oliolle ne arvot properteihin
-
-    /*Ticket(int amount, String type, float price) {
-        this.amount = amount;
-        this.type = type;
-        this.price = price;
-    }*/
 
     void setAmount(int amount)
     {
@@ -91,11 +82,6 @@ class Ticket
     //tän avulla pystyy tulostamaan kuittiin ja muihin lipun tietoja
     public String ticket_toString()
     {
-        return "Amount / Määrä: " + amount + ", Type / Lipputyyppi: " + type + ", Price / hinta: " + price;
+        return "Amount / Määrä: " + amount + ", Type / Lipputyyppi: " + type + ", Price / hinta: " + price + "€";
     }
-
-
-    //aattelin luoda noi setterit sitä lastenlippua varten myös, voi muokata jos tää tyyli ei sovi.
-    //periaattees tällä voi luua tän tiksun ilman et on pakko laittaa siihen olioon myös nimi
-    //ja puhnro
 }

@@ -14,12 +14,6 @@ class Shoppingcart
     public int discountTicketAmount;
     public boolean ticketFound;
 
-    //aattelin et ei tee constructoria tälle jos luo tän
-    //olion mainin alussa niin ei tuu ns ain sit luotua
-    //uutta ostoskoria
-
-    //tällä voi sit tyhjentää ostoskorin arraylistin lipuista
-    //ja nollata total_pricen
     void empty_Shopping_cart()
     {
         pending_tickets.clear();
@@ -33,12 +27,6 @@ class Shoppingcart
         discountTicketAmount = 0;
         ticketFound = false;
     }
-
-    /*void set_Pending_tickets(ArrayList<Ticket> pending_tickets) {
-        for (int i = 0; i < new_pending_tickets.size(); i++) {
-            pending_tickets.add(new_pending_tickets.get(i));
-        }
-    }*/
     
     void count_Total_price()
     {
@@ -47,18 +35,11 @@ class Shoppingcart
             total_price += pending_tickets.get(i).price;
         }
 
-        //tähän voit tehä vaik swingille sen tulostusominaisuuden esim.
     }
 
     double get_Total_price()
     {
         return total_price;
-    }
-
-    void printShoppingcart()
-    {
-        //jos haluut tehä erikseen metodin tän tulostukselle esim
-        //sen totalpricen täytyy olla sit property
     }
 
     void setHasNormalTicket(boolean new_hasNormalTicket)
