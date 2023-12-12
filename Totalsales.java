@@ -31,25 +31,22 @@ class Totalsales
             br.readLine();
             String line = br.readLine();
 
-        if(line != null && !line.isEmpty())
-        {
-            try
+            if(line != null && !line.isEmpty())
             {
-                total_sales_amount = total_sales_amount + Double.parseDouble(line.trim());
+                try
+                {
+                    total_sales_amount = total_sales_amount + Double.parseDouble(line.trim());
+                } 
+                catch(NumberFormatException e)
+                {
+                    System.err.println("Error parsing sales amount. The file contains an invalid value on the third line: " + line);
+                }
             } 
-            
-            catch(NumberFormatException e)
+            else
             {
-                System.err.println("Error parsing sales amount. The file contains an invalid value on the third line: " + line);
+                System.out.println("No previous sales amount found in the file.");
             }
         } 
-        
-        else
-        {
-            System.out.println("No previous sales amount found in the file.");
-        }
-        } 
-    
         catch(IOException e)
         {
             e.printStackTrace();
@@ -66,7 +63,6 @@ class Totalsales
             //'false' enablee päällekirjotuksen
             sales_writer = new FileWriter(sales_file_name);
         } 
-        
         else
         {
             sales_writer = new FileWriter(sales_file_name);

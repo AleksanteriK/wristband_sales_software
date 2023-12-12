@@ -526,7 +526,6 @@ public class Main extends JFrame
                                     purchase.printReceipt();
                                     total_sales.update_Sales_state();
                                 } 
-                                
                                 catch(IOException e)
                                 {
                                     e.printStackTrace();

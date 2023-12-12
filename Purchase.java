@@ -46,7 +46,6 @@ class Purchase
                 {
                     purchase_number_file.createNewFile();
                 }
-                
                 catch(IOException e)
                 {
                     e.printStackTrace();
@@ -64,7 +63,6 @@ class Purchase
                 {
                     purchase_number = Integer.parseInt(content);
                 } 
-                
                 catch(NumberFormatException e)
                 {
                     purchase_number_file_scanner.close();
@@ -103,7 +101,6 @@ class Purchase
             {
                 purchase_number_file.createNewFile();
             } 
-            
             catch (IOException e)
             {
                 e.printStackTrace();
