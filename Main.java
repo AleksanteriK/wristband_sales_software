@@ -138,7 +138,7 @@ public class Main extends JFrame
 
                                         if(shoppingcart.pending_tickets.get(i).getType() == "Lapsi")
                                         {
-                                            checkoutLabel.setText(checkoutLabel.getText() + "\"" + shoppingcart.pending_tickets.get(i).getCustomer_name() + " " + shoppingcart.pending_tickets.get(i).getPhone_number() + "\"" + " ");
+                                            checkoutLabel.setText(checkoutLabel.getText() + "(" + shoppingcart.pending_tickets.get(i).getCustomer_name() + " " + shoppingcart.pending_tickets.get(i).getPhone_number() + ")" + " ");
                                         }
 
                                         if(shoppingcart.pending_tickets.get(i).getType() == "Alennus")
@@ -255,7 +255,7 @@ public class Main extends JFrame
 
                                         if(shoppingcart.pending_tickets.get(i).getType() == "Lapsi")
                                         {
-                                            checkoutLabel.setText(checkoutLabel.getText() + "\"" + shoppingcart.pending_tickets.get(i).getCustomer_name() + " " + shoppingcart.pending_tickets.get(i).getPhone_number() + "\"" + " ");
+                                            checkoutLabel.setText(checkoutLabel.getText() + "(" + shoppingcart.pending_tickets.get(i).getCustomer_name() + " " + shoppingcart.pending_tickets.get(i).getPhone_number() + ")" + " ");
                                         }
 
                                         if(shoppingcart.pending_tickets.get(i).getType() == "Alennus")
@@ -381,7 +381,7 @@ public class Main extends JFrame
 
                                         if(shoppingcart.pending_tickets.get(i).getType() == "Lapsi")
                                         {
-                                            checkoutLabel.setText(checkoutLabel.getText() + "\"" + shoppingcart.pending_tickets.get(i).getCustomer_name() + " " + shoppingcart.pending_tickets.get(i).getPhone_number() + "\"" + " ");
+                                            checkoutLabel.setText(checkoutLabel.getText() + "(" + shoppingcart.pending_tickets.get(i).getCustomer_name() + " " + shoppingcart.pending_tickets.get(i).getPhone_number() + ")" + " ");
                                         }
 
                                         if(shoppingcart.pending_tickets.get(i).getType() == "Alennus")
