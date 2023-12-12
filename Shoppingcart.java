@@ -20,7 +20,16 @@ class Shoppingcart {
     //tällä voi sit tyhjentää ostoskorin arraylistin lipuista
     //ja nollata total_pricen
     void empty_Shopping_cart() {
-
+        pending_tickets.clear();
+        total_price = 0;
+        hasNormalTicket = false;
+        normalTicketAmount = false;
+        ticketPosition = 0;
+        hasChildTicket = false;
+        childTicketAmount = 0;
+        hasDiscountTicket = false;
+        discountTicketAmount = 0;
+        ticketFound = false;
     }
 
     /*void set_Pending_tickets(ArrayList<Ticket> pending_tickets) {
