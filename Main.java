@@ -1,5 +1,4 @@
 package project;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -524,13 +523,18 @@ public class Main extends JFrame
                                     purchase.setPurchase_number();
                                     purchase.updatePurchase_number();
                                     purchase.printReceipt();
-                                    total_sales.update_Sales_state();
                                     purchase.update_Day_sales(shoppingcart.pending_tickets);
+                                    total_sales.update_Sales_state(purchase);
                                 }
 
                                 catch(IOException a)
                                 {
                                     a.printStackTrace();
+                                }
+
+                                finally 
+                                {
+                                    purchase.clearTotal_price();
                                 }
                             }
                         }
@@ -543,7 +547,6 @@ public class Main extends JFrame
 
     public static void main (String[] args)
     {
-        /* ---- Declarations ---- */
         new Main();
     }
 }

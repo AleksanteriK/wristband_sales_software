@@ -1,5 +1,4 @@
 package project;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.time.format.DateTimeFormatter;
@@ -17,7 +16,7 @@ class Totalsales
 
     void addTo_sales(double new_sale)
     {
-        total_sales_amount += new_sale;
+        total_sales_amount = new_sale;
     }
 
     //tällä haetaan tiedostosta edellinen kokonaismyyntimäärä ennenku sinne
@@ -26,7 +25,8 @@ class Totalsales
     {
         try(BufferedReader br = new BufferedReader(new FileReader(sales_file)))
         {
-            //Skippaa ekat kaks riviä
+            //Skippaa ekat kolme riviä jotta lukee oikeesta kohtaa kokonaismyynnin
+            br.readLine();
             br.readLine();
             br.readLine();
             String line = br.readLine();
@@ -57,7 +57,7 @@ class Totalsales
         }
     }
 
-    void update_Sales_state() throws IOException
+    void update_Sales_state(Purchase purchase) throws IOException
     {
         getPrevious_sales_amount();
 
@@ -67,10 +67,10 @@ class Totalsales
             //'false' enablee päällekirjotuksen
             sales_writer = new FileWriter(sales_file_name);
         }
-         
+
         else
         {
-            sales_writer = new FileWriter(sales_file_name);
+            sales_writer = new FileWriter(sales_file_name, false);
         }
 
         try
@@ -80,9 +80,12 @@ class Totalsales
             sales_writer.write("\r\n");
             sales_writer.write(buytime.format(dtf));
             sales_writer.write("\r\n");
+            sales_writer.write("Ostotapahtumia yhteensä: ");
+            sales_writer.write(Integer.toString(purchase.getPurchase_number() + 1));
+            sales_writer.write("\r\n");
+            sales_writer.write("Myyntiä yhteensä: ");
             sales_writer.write(Double.toString(total_sales_amount));
             sales_writer.write("€");
-            //kesken
         } 
         
         finally

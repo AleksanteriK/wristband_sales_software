@@ -103,6 +103,11 @@ class Purchase
         return purchase_number;
     }
 
+    void clearTotal_price()
+    {
+        total_price = 0;
+    }
+
     //tällä metodilla taas sitten se uus seuraava ostosnumero päivitetään tiedostoon
     void updatePurchase_number() throws IOException
     {
@@ -189,14 +194,16 @@ class Purchase
 
     void update_Day_sales(ArrayList<Ticket> shoppingcart_tickets) throws IOException {
         daysales_file = new File(daysales_file_name);
-        boolean isNewDay = hasDayChanged();
+        //haetaan tässä kohtaa jo tieto onko päivä vaihtunut, jotta try catch ja tiedosto
+        //luku saadaan tehtyy järkevästi
+        boolean has_day_changed = hasDayChanged();
         BufferedWriter daysales_writer = null;
     
         try
         {
-            daysales_writer = new BufferedWriter(new FileWriter(daysales_file, !isNewDay));
+            daysales_writer = new BufferedWriter(new FileWriter(daysales_file, !has_day_changed));
 
-            if (isNewDay)
+            if (has_day_changed)
             {
                 daysales_writer.write("Päivän Myynnit:");
                 daysales_writer.write("\r\n");
@@ -206,10 +213,15 @@ class Purchase
                 daysales_writer.write("Ostoaika: ");
                 daysales_writer.write(time_of_purchase.format(time_format));
                 daysales_writer.write("\r\n");
+                daysales_writer.write("Ostos_ID: " + Integer.toString(purchase_number));
+                daysales_writer.write("\r\n");
 
                 for (int i = 0; i < shoppingcart_tickets.size(); i++) 
                 {
                     daysales_writer.write(shoppingcart_tickets.get(i).ticket_toString());
+                    daysales_writer.write("\r\n");
+                    daysales_writer.write(shoppingcart_tickets.get(i).ticket_Getnumber_and_name());
+                    daysales_writer.write("\r\n");
                     daysales_writer.write("\r\n");
                 }
             }
@@ -221,9 +233,14 @@ class Purchase
                 daysales_writer.write("Ostoaika: ");
                 daysales_writer.write(time_of_purchase.format(time_format));
                 daysales_writer.write("\r\n");
+                daysales_writer.write("Ostos_ID: " + Integer.toString(purchase_number));
+                daysales_writer.write("\r\n");
 
                 for (int i = 0; i < shoppingcart_tickets.size(); i++) {
                     daysales_writer.write(shoppingcart_tickets.get(i).ticket_toString());
+                    daysales_writer.write("\r\n");
+                    daysales_writer.write(shoppingcart_tickets.get(i).ticket_Getnumber_and_name());
+                    daysales_writer.write("\r\n");
                     daysales_writer.write("\r\n");
                 }
             }

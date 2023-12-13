@@ -5,8 +5,8 @@ class Ticket
     public int amount;
     public String type;
     public double price;
-    public String customer_name;
-    public String phone_number;
+    public String customer_name = "-"; //default
+    public String phone_number = "-"; //default
     public String discountType;
 
     void setAmount(int amount)
@@ -61,12 +61,12 @@ class Ticket
 
     String getCustomer_name()
     {
-        return customer_name;
+        return "Nimi: " + customer_name;
     }
 
     String getPhone_number()
     {
-        return phone_number;
+        return "Puhelin: " + phone_number;
     }
 
     void addAmount(int add_amount)
@@ -83,5 +83,9 @@ class Ticket
     public String ticket_toString()
     {
         return "Amount / Määrä: " + amount + ", Type / Lipputyyppi: " + type + ", Price / hinta: " + price + "€";
+    }
+
+    public String ticket_Getnumber_and_name() {
+        return "Puhelin: " + phone_number + " nimi/nimet: " + customer_name;
     }
 }
