@@ -91,11 +91,11 @@ class Purchase
         
         catch(FileNotFoundException e)
         {
-            e.printStackTrace(); // or log the exception
+            e.printStackTrace();
             return "file not found";
         }
 
-        return "method was called"; //temp
+        return "method was called";
     }
 
     int getPurchase_number()
