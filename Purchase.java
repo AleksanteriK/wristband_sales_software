@@ -19,7 +19,7 @@ class Purchase
 {
     public ArrayList<Ticket> tickets = new ArrayList<>();
     public String purchase_number_file_name = "ostokset_maara.txt";
-    public String receipt_file_name = "kuitti.txt";
+    public String receipt_file_name = "kuitti_" + getPurchase_number() + ".txt";
     public String daysales_file_name = "paivanmyynnit.txt";
     public File purchase_number_file;
     public File receipt_file;
@@ -137,6 +137,7 @@ class Purchase
     void printReceipt() throws IOException
     {   //päivitetään ostopäivämäärä, ja tätä arvoa verrataan sitten
         //ajankohtaiseen päivämäärään kun päivitetään päivän myyntitiedostoa
+        receipt_file_name = "kuitti_" + getPurchase_number() + ".txt";
         buydate = LocalDate.now();
         receipt_file = new File(receipt_file_name);
         total_price_without_alv = simplified.format(total_price * 0.90);

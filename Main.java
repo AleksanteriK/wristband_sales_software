@@ -535,6 +535,9 @@ public class Main extends JFrame
                                 finally 
                                 {
                                     purchase.clearTotal_price();
+                                    shoppingcart.empty_Shopping_cart();
+                                    checkoutLabel.setText("Ostoskori");
+                                    totalPriceLabel.setText("Kokonaishinta: " + shoppingcart.get_Total_price() + "€");
                                 }
                             }
                         }
