@@ -216,6 +216,8 @@ class Purchase
                 daysales_writer.write("\r\n");
                 daysales_writer.write("Ostos_ID: " + Integer.toString(purchase_number));
                 daysales_writer.write("\r\n");
+                daysales_writer.write("Kokonaishinta: " + Double.toString(total_price) + " €");
+                daysales_writer.write("\r\n");
 
                 for (int i = 0; i < shoppingcart_tickets.size(); i++) 
                 {
@@ -235,6 +237,8 @@ class Purchase
                 daysales_writer.write(time_of_purchase.format(time_format));
                 daysales_writer.write("\r\n");
                 daysales_writer.write("Ostos_ID: " + Integer.toString(purchase_number));
+                daysales_writer.write("\r\n");
+                daysales_writer.write("Kokonaishinta: " + Double.toString(total_price) + " €");
                 daysales_writer.write("\r\n");
 
                 for (int i = 0; i < shoppingcart_tickets.size(); i++) {
