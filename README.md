@@ -1,2 +1,2 @@
-# java_project
+Wristband sales software made with Java
 
